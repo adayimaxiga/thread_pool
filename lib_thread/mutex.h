@@ -20,10 +20,10 @@
 #include <condition_variable>
 #include <mutex>
 
-#include "cartographer/common/time.h"
+#include "./time.h"
 
-namespace cartographer {
-namespace common {
+
+namespace thread_lib_xjturm {
 
 // Enable thread safety attributes only with clang.
 // The attributes can be safely erased when compiling with other compilers.
@@ -77,7 +77,7 @@ class CAPABILITY("mutex") Mutex {
     }
 
     template <typename Predicate>
-    bool AwaitWithTimeout(Predicate predicate, common::Duration timeout)
+    bool AwaitWithTimeout(Predicate predicate, Duration timeout)
         REQUIRES(this) {
       return mutex_->condition_.wait_for(lock_, timeout, predicate);
     }
@@ -94,7 +94,6 @@ class CAPABILITY("mutex") Mutex {
 
 using MutexLocker = Mutex::Locker;
 
-}  // namespace common
-}  // namespace cartographer
+}
 
 #endif  // CARTOGRAPHER_COMMON_MUTEX_H_

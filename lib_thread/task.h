@@ -19,12 +19,12 @@
 
 #include <set>
 
-#include "cartographer/common/mutex.h"
-#include "glog/logging.h"
+#include "./mutex.h"
+//#include "glog/logging.h"
 #include "thread_pool.h"
 
-namespace cartographer {
-namespace common {
+namespace thread_lib_xjturm {
+
 
 class ThreadPoolInterface;
 
@@ -70,7 +70,7 @@ class Task {
   Mutex mutex_;
 };
 
-}  // namespace common
-}  // namespace cartographer
+}
+
 
 #endif  // CARTOGRAPHER_COMMON_TASK_H_

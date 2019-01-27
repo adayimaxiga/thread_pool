@@ -22,8 +22,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace cartographer {
-namespace common {
+namespace thread_lib_xjturm {
 
 // Implementation of c++14's std::make_unique, taken from
 // https://isocpp.org/files/papers/N3656.txt
@@ -56,7 +55,7 @@ typename _Unique_if<T>::_Unknown_bound make_unique(size_t n) {
 template <class T, class... Args>
 typename _Unique_if<T>::_Known_bound make_unique(Args&&...) = delete;
 
-}  // namespace common
-}  // namespace cartographer
+}
+
 
 #endif  // CARTOGRAPHER_COMMON_MAKE_UNIQUE_H_

@@ -24,11 +24,11 @@
 #include <unordered_map>
 #include <vector>
 
-#include "cartographer/common/mutex.h"
-#include "cartographer/common/task.h"
+#include "./mutex.h"
+#include "./task.h"
 
-namespace cartographer {
-namespace common {
+namespace thread_lib_xjturm {
+
 
 class Task;
 
@@ -80,7 +80,5 @@ class ThreadPool : public ThreadPoolInterface {
       GUARDED_BY(mutex_);
 };
 
-}  // namespace common
-}  // namespace cartographer
-
+}
 #endif  // CARTOGRAPHER_COMMON_THREAD_POOL_H_
