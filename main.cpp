@@ -10,11 +10,18 @@ namespace {
         int number_count=0; GUARDED_BY(mutex_);         //这样保护共享资源
     public:
         void do_something(int number) {
-            Mutex::Locker locker(&mutex_);              //共享资源这样上锁，其他线程阻塞,线程结束则自动撤销
 
-            std::cout<<"XJTU robomaster is best. "<<"I am task: "<< number<<std::endl;
+            {
+                Mutex::Locker locker(&mutex_);              //共享资源这样上锁,离开大括号范围locker自动释放解锁
+                std::cout<<"XJTU robomaster is best. "<<"I am task: "<< number<<std::endl;
+            }
+
             number_count ++;
-            std::cout<<"count is "<<number_count<<std::endl;
+
+            {
+                Mutex::Locker locker(&mutex_);              //共享资源这样上锁，其他线程阻塞,线程结束则自动撤销
+                std::cout<<"count is "<<number_count<<std::endl;
+            }
         }
 
         void how_to_wait_mutex()
